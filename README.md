@@ -31,21 +31,29 @@ Este proyecto fue desarrollado y probado en un entorno local Windows utilizando 
 
 Primero, instalar el subsistema de Linux (WSL2) con Ubuntu. Para ello, abrir PowerShell como administrador y ejecutar:
 
+```bash
 wsl --install -d Ubuntu
+```
 
 Luego, instalar Docker Desktop desde docker.com, asegurándose de habilitar el soporte para WSL2 e integración con Ubuntu.
 
 Verificar que Docker esté correctamente instalado con:
 
+```bash
 docker --version
+```
 
 Posteriormente, descargar la imagen oficial de Jupyter con PySpark:
 
+```bash
 docker pull jupyter/pyspark-notebook:x86_64-ubuntu-22.04
+```
 
 Finalmente, iniciar el contenedor montando el directorio actual para compartir archivos:
 
+```bash
 docker run -p 8888:8888 -v "$PWD":/home/jovyan/work jupyter/pyspark-notebook:x86_64-ubuntu-22.04
+```
 
 Al ejecutarlo, se mostrará una URL con un token para acceder a JupyterLab en el navegador, típicamente en:
 
@@ -63,7 +71,7 @@ A continuación se muestran los resultados generados por el análisis realizado 
 
 ### 📊 Visualización de llamadas por hora
 
-![Gráfico de llamadas por hora](./inputs/files/grafico.png)
+![Gráfico de llamadas por hora](./resultado/grafico.png)
 
 > El gráfico representa la cantidad total de llamadas realizadas por hora del día.
 
@@ -71,14 +79,14 @@ A continuación se muestran los resultados generados por el análisis realizado 
 
 Se generó un archivo en formato **Parquet** con los resultados procesados:
 
-📎 [`resultado.gz.parquet`](./inputs/files/resultado.gz.parquet)
+📎 [`resultado.gz.parquet`](./resultado/resultado.gz.parquet)
 
 > Este archivo contiene los datos procesados.
 
 ## Respuestas al enunciado: Ejercicio 2
 
-Para priorizar los procesos productivos sobre los análisis exploratorios en un cluster Hadoop on-premise, se recomienda configurar el CapacityScheduler de YARN con dos colas diferenciadas, asignando un 70% de recursos a los procesos productivos y un 30% a los análisis exploratorios. Además, se deben limitar los recursos (CPU y memoria) por contenedor para evitar que un proceso monopolice el cluster y, cuando sea posible, programar los procesos más intensivos fuera del horario laboral.
+Para priorizar los procesos productivos sobre los análisis, recomiendendo configurar el CapacityScheduler de YARN con dos colas diferenciadas, asignando un 70%/30% a dos diferentes colas. Además, se se podrian limitar los recursos (CPU y memoria) por contenedor para evitar que un proceso monopolice el cluster y, cuando sea posible, programar los procesos más intensivos fuera del horario laboral.
 
-En cuanto a la estrategia para administrar la ejecución intensiva de los procesos productivos, es aconsejable dividir los datos en lotes pequeños para permitir ejecuciones en ventanas cortas y continuas, evitando cargas masivas que saturen los recursos. El uso de Delta Lake como formato de almacenamiento mejora significativamente la eficiencia en lectura y actualización de datos respecto a Parquet.
+En cuanto a la estrategia para administrar la ejecución intensiva de los procesos productivos, aconsejo dividir los datos en lotes pequeños para permitir ejecuciones en ventanas cortas y continuas, evitando cargas masivas que saturen los recursos. El uso de Delta Lake como formato de almacenamiento mejora la eficiencia en lectura y actualización de datos respecto a Parquet.
 
-Entre las herramientas de scheduling recomendadas: Apache Airflow, crontab para tareas simples y plataformas como Databricks.
+Entre las herramientas de scheduling: Apache Airflow (conocimiento basico), crontab para tareas simples y plataformas como Databricks.
