@@ -24,6 +24,7 @@ El objetivo del presente documento es documentar la solución propuesta al enunc
     │   └── resultado.gz.parquet    # Archivo resultado del ejercicio 1.1
 ├── technical_challenge.pdf         # Enunciado      
 └── README.md                       # Este archivo
+```
 
 ## Instalación y ejecución
 Este proyecto fue desarrollado y probado en un entorno local Windows utilizando WSL2 y Docker Desktop.
