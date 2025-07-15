@@ -90,3 +90,16 @@ Para priorizar los procesos productivos sobre los análisis, recomiendendo confi
 En cuanto a la estrategia para administrar la ejecución intensiva de los procesos productivos, aconsejo dividir los datos en lotes pequeños para permitir ejecuciones en ventanas cortas y continuas, evitando cargas masivas que saturen los recursos. El uso de Delta Lake como formato de almacenamiento mejora la eficiencia en lectura y actualización de datos respecto a Parquet.
 
 Entre las herramientas de scheduling: Apache Airflow (conocimiento basico), crontab para tareas simples y plataformas como Databricks.
+
+Para garantizar que haya recursos de cpu y memoria disponibles para un equilibrio de entre job de alta demanda y los demas se tendria que configuar en YARN las cotas de recursos que pueden utilizase para no monopolizar. A continuacion un ejemplo de configuracion para nuestro escenario:
+
+```bash
+spark-submit \
+  --num-executors 9 \
+  --executor-cores 2 \
+  --executor-memory 7G \
+  --conf spark.yarn.executor.memoryOverhead=1G \
+  --conf spark.yarn.am.memory=1G \
+  --conf spark.yarn.am.cores=1 \
+  --conf spark.dynamicAllocation.enabled=false \
+```
