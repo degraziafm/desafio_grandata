@@ -1,0 +1,14 @@
+{
+    "rows_limit": 100,
+    "cost": [
+        {"nro_region": 1, "precio": 1.5},
+        {"nro_region": 2, "precio": 1.5},
+        {"nro_region": 3, "precio": 1.5},
+        {"nro_region": 4, "precio": 1.5},
+        {"nro_region": 5, "precio": 1.5},
+        {"nro_region": 6, "precio": 2.0},
+        {"nro_region": 7, "precio": 2.0},
+        {"nro_region": 8, "precio": 2.0},
+        {"nro_region": 9, "precio": 2.0}
+    ]
+}
