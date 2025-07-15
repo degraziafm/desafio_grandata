@@ -71,7 +71,7 @@ A continuación se muestran los resultados generados por el análisis realizado 
 
 ### 📊 Visualización de llamadas por hora
 
-![Gráfico de llamadas por hora](./resultado/grafico.png)
+![Gráfico de llamadas por hora](./solucion/resultado/grafico.png)
 
 > El gráfico representa la cantidad total de llamadas realizadas por hora del día.
 
@@ -79,7 +79,7 @@ A continuación se muestran los resultados generados por el análisis realizado 
 
 Se generó un archivo en formato **Parquet** con los resultados procesados:
 
-📎 [`resultado.gz.parquet`](./resultado/resultado.gz.parquet)
+📎 [`resultado.gz.parquet`](./solucion/resultado/resultado.gz.parquet)
 
 > Este archivo contiene los datos procesados.
 
